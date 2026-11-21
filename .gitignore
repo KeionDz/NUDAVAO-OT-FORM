@@ -1,0 +1,19 @@
+node_modules
+dist
+.vite
+.vercel
+*.local
+.DS_Store
+
+# Sample PDFs written by npm run check:ot
+.check
+
+# Filled forms and attendance exports kept next to the project by hand.
+# They hold names, ID numbers and swipe times — never commit them.
+/output
+*.signed.pdf
+Transaction_*.pdf
+
+# Scratch files from the session that built this, and filled forms saved here.
+/work
+OT Form - *.pdf

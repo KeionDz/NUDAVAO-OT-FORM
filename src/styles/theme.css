@@ -1,0 +1,171 @@
+/* =============================================================================
+   NU DAVAO — OT Form Filler
+   Design tokens.
+
+   The same tokens as the sibling NU Davao apps (../nu-room-booking,
+   ../nu-lic-logger), so the systems read as one family:
+
+     Primary Blue  #35408E
+     Deep Navy     #262D65
+     Gold          #FFD41C
+
+   GOLD IS AN ACCENT, NOT A SURFACE. #FFD41C against white measures about 1.5:1,
+   nowhere near readable, so it never carries text on a light ground. It is the
+   rule under the navy header, the active tab underline, and the total's marker
+   — always navy text on gold or gold on navy, both of which clear 4.5:1.
+
+   No official NU typeface is documented, so the type stack is the system one:
+   zero network cost, native rendering, no layout shift.
+   ============================================================================= */
+
+:root {
+  /* Brand — navy */
+  --nu-navy-900: #161b3f;
+  --nu-navy-800: #262d65; /* Deep Navy */
+  --nu-navy-700: #2d3676;
+  --nu-navy-600: #35408e; /* Primary Blue */
+  --nu-navy-500: #4a5aa8;
+  --nu-navy-100: #dfe3f2;
+  --nu-navy-050: #eef0f9;
+
+  /* Brand — gold. Never as text on white; see the note above. */
+  --nu-gold-700: #8a6b00;
+  --nu-gold-600: #b58c05;
+  --nu-gold-500: #ffd41c; /* Gold */
+  --nu-gold-300: #ffe273;
+  --nu-gold-100: #fff3c4;
+  --nu-gold-050: #fffae6;
+
+  /* Neutrals */
+  --page: #eff1f7;
+  --surface: #ffffff;
+  --surface-alt: #f6f8fc;
+  --surface-sunken: #eceff7;
+  --border: #dde2ee;
+  --border-strong: #c2cadd;
+  --text: #12172e;
+  --text-muted: #55607a;
+  --text-faint: #7c869c;
+
+  /* Status. Day statuses map onto these: overtime → ok, needs a look → warn,
+     missing data → err. */
+  --ok-fg: #106445;
+  --ok-bg: #e7f6ee;
+  --ok-border: #a6dcc0;
+  --warn-fg: #8a5200;
+  --warn-bg: #fff4e0;
+  --warn-border: #f0cf95;
+  --err-fg: #98202a;
+  --err-bg: #fcebec;
+  --err-border: #f0b8bc;
+
+  /* Type */
+  --font-sans: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', Consolas, 'SF Mono', monospace;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Shadows, tinted navy rather than grey so they sit in the palette. */
+  --shadow-sm: 0 1px 2px rgba(22, 27, 63, 0.05), 0 2px 8px rgba(22, 27, 63, 0.05);
+  --shadow-md: 0 2px 6px rgba(22, 27, 63, 0.06), 0 12px 28px rgba(22, 27, 63, 0.09);
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --header-h: 72px;
+
+  /* One focus treatment everywhere. Two rings — a white spacer then navy — so
+     it reads on any surface colour, including on top of a navy button. */
+  --focus-ring: 0 0 0 3px var(--surface), 0 0 0 6px var(--nu-navy-600);
+
+  --ease: cubic-bezier(0.2, 0, 0.1, 1);
+  --fast: 130ms;
+  --normal: 200ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+dd {
+  margin-inline-start: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--surface-sunken);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
